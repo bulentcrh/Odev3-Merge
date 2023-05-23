@@ -1,4 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:learning_app/category_page.dart';
+import 'package:learning_app/offer_page.dart';
+
 import 'package:learning_app/project_images.dart';
 import 'package:learning_app/project_padding.dart';
 
@@ -68,6 +72,26 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  "Category",
+                  style: Theme.of(context).textTheme.bodyLarge
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => CategoryPage()));
+                  }, 
+                  child: Text("View All")
+                  
+                )
+              ],
+            ),
+          ),
         ],
        ),
      ),
@@ -84,7 +108,9 @@ class _CustomOfferButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ElevatedButton(
-       onPressed: () {}, 
+       onPressed: () {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) => OfferPage(),));
+       }, 
        child: Text("Offer Now Get",
        style: Theme.of(context).textTheme.subtitle2?.copyWith(color: Colors.red, fontWeight: FontWeight.bold)),
        style: ElevatedButton.styleFrom(backgroundColor: Colors.white , shape: const StadiumBorder()),
